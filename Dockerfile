@@ -3,7 +3,7 @@ LABEL maintainer "Ryuichiro Nakato <rnakato@iam.u-tokyo.ac.jp>"
 ENV DEBIAN_FRONTEND=noninteractive
 
 WORKDIR /opt
-ENV PATH /opt/bowtie-1.1.2:/opt/script:${PATH}
+ENV PATH /opt/bowtie-1.1.2:/opt:${PATH}
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -21,6 +21,6 @@ ADD spom spom
 RUN bowtie-build -C scer/genome.fa scer
 RUN bowtie-build -C spom/genome.fa spom
 
-ADD script script
+ADD bowtie.sh .
 
 CMD ["/bin/bash"]
