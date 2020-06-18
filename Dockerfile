@@ -14,13 +14,15 @@ RUN apt-get update \
     && apt-get clean
 
 ADD bowtie-1.1.2-linux-x86_64.zip .
-RUN unzip bowtie-1.1.2-linux-x86_64.zip
+RUN unzip bowtie-1.1.2-linux-x86_64.zip \
+    && rm bowtie-1.1.2-linux-x86_64.zip
 
 ADD scer scer
 ADD spom spom
-RUN bowtie-build -C scer/genome.fa scer
-RUN bowtie-build -C spom/genome.fa spom
+RUN bowtie-build -C scer/genome.fa scer/scer
+RUN bowtie-build -C spom/genome.fa spom/spom
 
-ADD bowtie.sh .
+ADD bowtie_cs.sh bowtie_cs.sh
+RUN chmod +x bowtie_cs.sh
 
 CMD ["/bin/bash"]
