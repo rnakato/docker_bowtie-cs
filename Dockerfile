@@ -1,5 +1,5 @@
 FROM debian:latest
-LABEL maintainer "Ryuichiro Nakato <rnakato@iam.u-tokyo.ac.jp>"
+LABEL maintainer "Ryuichiro Nakato <rnakato@iqb.u-tokyo.ac.jp>"
 ENV DEBIAN_FRONTEND=noninteractive
 
 WORKDIR /opt
